@@ -1,0 +1,21 @@
+#!/bin/bash -x
+start=`pwd`
+rm -rf /tmp/staging
+mkdir /tmp/staging
+cd /tmp/staging
+osc co $1
+cd $start
+for f in *
+do
+	echo "Processing $f"
+	echo "<package name=\"$f\" project=\"$1\"> <title/> <description/> </package>" > /tmp/desc
+	cd /tmp/staging/$1
+	osc meta pkg -F /tmp/desc $1 $f
+	osc up $1
+	cd ..
+	osc co $1 $f
+	cd $1/$f
+	cp -r $start/$f/* .
+	osc add *
+	osc commit -m 'import'
+done

@@ -1,0 +1,8 @@
+#!/bin/bash
+# $1 - URL to github without the ohpc
+# $2 - Branch within that github to use
+# $3 - OBS project to use as a base for the aggregate
+sed -i -- 's,GITHUB_URL,'"$1"',g' */_service
+sed -i -- 's,GITHUB_BRANCH,'"$2"',g' */_service
+sed -i -- 's,AGGREGATE_PROJECT,'"$3"',g' */_aggregate
+rm -rf */*--
