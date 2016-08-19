@@ -1,5 +1,6 @@
 #!/bin/bash
 sed -i -- 's/git@github.com:openhpc/GITHUB_URL/g' */_service
 sed -i -- 's/obs\/OpenHPC_1.1_Factory/GITHUB_BRANCH/g' */_service
+sed -i -- 's/obs\/OpenHPC_1.0_Factory/GITHUB_BRANCH/g' */_service
 sed -i -- 's/OpenHPC\:1\.1/AGGREGATE_PROJECT/g' */_aggregate
 rm -rf */*--
